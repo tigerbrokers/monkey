@@ -1,15 +1,13 @@
 <template>
   <div class="app">
-    <PRList></PRList>
+    <!-- <PRList></PRList> -->
+    <router-view></router-view>
   </div>
 </template>
 <script>
-  import PRList from './prlist'
+  // import PRList from './prlist'
   export default {
-    name: 'App',
-    components: {
-      PRList
-    }
+    name: 'App'
   }
 </script>
 <style scoped>

@@ -4,3 +4,5 @@ declare module '*.vue' {
   import Vue from 'vue'
   export default Vue
 }
+
+declare var require : (filename:any,resolve:any)=>any;

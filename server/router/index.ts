@@ -42,7 +42,7 @@ const routeList:any = requireDir('.')
     }
   })
 
-router.get('/', async ctx => {
+router.get('/*', async ctx => {
   await ctx.render('index')
 })
 

@@ -5,7 +5,7 @@ PATH=$PATH:node_modules/.bin
 NODE_ENV=development
 
 postcss -w \
-  --dir build/style client/style/**/*.css \
+  --dir build/style client/assests/style/**/*.css \
 | webpack-dev-server \
 | nodemon \
   -e .ts,.js,.html \
