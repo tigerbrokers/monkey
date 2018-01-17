@@ -9,7 +9,7 @@ const isProd = config.get('env') !== 'dev'
 
 module.exports = {
   entry: {
-    app: './client/index.ts'
+    app: './client/index.js'
   },
   output: {
     path: path.join(__dirname, './build'),
