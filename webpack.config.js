@@ -9,7 +9,7 @@ const isProd = config.get('env') !== 'dev'
 
 module.exports = {
   entry: {
-    app: './client/index.ts'
+    app: './client/index.js'
   },
   output: {
     path: path.join(__dirname, './build'),
@@ -38,12 +38,27 @@ module.exports = {
       }
     }, {
       test: /\.vue$/,
-      loader: 'vue-loader',
-      options: {
-        extractCSS: true,
-        preserveWhitespace: false
-      }
-    }, {
+      use: [
+        {
+          loader: 'vue-loader',
+          options: {
+            extractCSS: true,
+            preserveWhitespace: false
+          }
+        },
+        {
+          loader: 'iview-loader',
+          options: {
+            prefix: false
+          }
+        }
+      ]
+    },
+    {
+      test: /iview\/.*?js$/,
+      loader: 'babel-loader'
+    },
+    {
       test: /\.css$/,
       use: [
         'style-loader',
@@ -52,6 +67,10 @@ module.exports = {
           loader: 'postcss-loader'
         }
       ]
+    },
+    {
+      test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+      loader: 'url-loader?limit=1024'
     }]
   },
   devtool: 'sourcemap',
