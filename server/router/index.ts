@@ -9,7 +9,7 @@ const router = new Router()
 
 router.use(async (ctx, next) => {
   Object.assign(ctx.state, {
-    title: 'koaplate',
+    title: 'monkeys',
     moment,
     path: ctx.path,
     hostname: os.hostname(),
