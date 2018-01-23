@@ -35,9 +35,9 @@ render(app, {
   debug: false
 })
 
+app.use(statics('./build'))
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-app.use(statics('./build'))
 
 export default app
