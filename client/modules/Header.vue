@@ -1,30 +1,47 @@
 <template>
   <header>
-    <div class="logo">logo</div>
-    <ul>
-      <li class="cur">首页</li>
-      <li>资讯</li>
-      <li>工具</li>
-      <li>资源</li>
-      <li>关于我们</li>
-      <li>项目</li>
-    </ul>
-    <div>
-      <a>登录</a>
-      <a>注册</a>
+    <div class="logo">
+      <a href="/index">
+        <!-- <img src="~assets/img/logo.svg" /> -->
+      </a>
     </div>
+    <ul class="nav-bar">
+      <li v-for="menu in navList">
+        <router-link :to="menu.path">
+          <span> {{ menu.name }} </span>
+        </router-link>
+      </li>
+    </ul>
+    <Input class="search-input" v-model="value" placeholder="搜索" icon="ios-search"/>
   </header>
 </template>
-
 <script>
+import Input from 'iview/src/components/input'
+
+const navList = [
+  {name: '首页', path: 'index'},
+  {name: '资讯', path: 'news'},
+  {name: '工具', path: 'tools'},
+  {name: '资源', path: 'resource'},
+  {name: '项目', path: 'project'},
+  {name: '关于我们', path: 'aboutUs'}
+]
 export default {
-  name: 'Header'
+  name: 'Header',
+  data () {
+    return {
+      single: false,
+      navList: navList,
+      value: ''
+    }
+  }
 }
 </script>
 
 <style scoped>
   header {
-    height: 80px;
+    height: 60px;
+    line-height: 60px;
     background: #fff;
     width: 1200px;
     margin: 0 auto;
@@ -36,11 +53,31 @@ export default {
     background: #ddd;
     text-align: center;
     line-height: 40px;
-  }
-  ul {
-    display: flex;
+    transform: translate(0, 10px);
   }
   ul li {
-
+    width: 80px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .nav-bar {
+    display: flex;
+    margin-left: 80px;
+  }
+  .nav-bar a {
+    color: #6c727b
+  }
+  .nav-bar a.router-link-active {
+    color: #0071FF;
+  }
+  .search-input {
+    display: flex;
+    align-items: center;
+    width: 170px;
+    margin-left: 110px;
+  }
+  .search-input .ivu-input {
+    border-radius: 0;
   }
 </style>
