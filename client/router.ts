@@ -23,23 +23,23 @@ const routes = [
     meta: { auth: false }
   }, {
     path: '/news',
-    component: index
+    component: news
   },
   {
     path: '/tools',
-    component: index
+    component: tools
   },
   {
     path: '/resource',
-    component: index
+    component: resource
   },
   {
     path: '/project',
-    component: index
+    component: project
   },
   {
     path: '/aboutUs',
-    component: index
+    component: aboutUs
   }
 ]
 
