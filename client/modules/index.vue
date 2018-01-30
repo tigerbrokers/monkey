@@ -1,19 +1,12 @@
 <template>
   <div>
-    <Header></Header>
-    <div class="content">
-      <router-view></router-view>
-    </div>
+    首页
   </div>
 </template>
 
 <script>
-import Header from './Header'
 export default {
-  name:'index',
-  components: {
-    Header
-  }
+  name:'index'
 }
 </script>
 
