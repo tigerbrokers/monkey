@@ -1,15 +1,13 @@
 <template>
-  <div>
-    首页
-  </div>
+  <div> 这是工具页面</div>
 </template>
 
 <script>
 export default {
-  name:'index'
+  name: 'Tools'
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

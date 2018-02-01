@@ -1,15 +1,13 @@
 <template>
-  <div>
-    首页
-  </div>
+  <div> 关于我们页面</div>
 </template>
 
 <script>
 export default {
-  name:'index'
+  name: 'AboutUs'
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

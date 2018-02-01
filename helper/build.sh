@@ -9,5 +9,5 @@ rm -rf build
 webpack
 
 # postcss -o build/style.css client/style/index.css
-postcss --dir build/style client/assests/style/**/*.css
+postcss --dir build/style client/assets/style/**/*.css
 
