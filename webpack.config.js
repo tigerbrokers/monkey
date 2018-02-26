@@ -17,7 +17,7 @@ module.exports = {
     filename: 'js/[name].js'
   },
   resolve: {
-    extensions: ['.js', '.ts', '.vue', '.json'],
+    extensions: ['.js', '.ts', '.vue', '.json', '.css'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
@@ -54,10 +54,10 @@ module.exports = {
         }
       ]
     },
-    {
-      test: /iview\/.*?js$/,
-      loader: 'babel-loader'
-    },
+    // {
+    //   test: /iview\/.*?js$/,
+    //   loader: 'babel-loader'
+    // },
     {
       test: /\.css$/,
       use: [

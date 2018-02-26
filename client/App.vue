@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <Header></Header>
     <div class="content">
       <router-view></router-view>
@@ -16,13 +16,19 @@
     }
   }
 </script>
+
 <style>
+  @import './assets/style/index.css'
   .app {
+    width: 100%;
     position: relative;
     overflow: hidden;
-
     & p {
       color: inherit;
+    }
+    .content {
+      width: 1200px;
+      margin: auto;
     }
   }
 </style>

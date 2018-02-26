@@ -2,7 +2,7 @@
   <header>
     <div class="logo">
       <a href="/index">
-        <!-- <img src="~assets/img/logo.svg" /> -->
+        <img src="../assets/icons/monkey.svg" />
       </a>
     </div>
     <ul class="nav-bar">
