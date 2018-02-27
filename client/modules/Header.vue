@@ -1,23 +1,26 @@
 <template>
   <header>
-    <div class="logo">
-      <a href="/index">
-        <img src="../assets/icons/monkey.svg" />
-      </a>
+    <div>
+      <div class="logo">
+        <a href="/index">
+          <img src="../assets/icons/monkey.svg" />
+        </a>
+      </div>
+      <ul class="nav-bar">
+        <li v-for="menu in navList">
+          <router-link :to="menu.path">
+            <span> {{ menu.name }} </span>
+          </router-link>
+        </li>
+      </ul>
+      <Input class="search-input" v-model="value" placeholder="搜索" icon="ios-search"/>
+      <account></account>
     </div>
-    <ul class="nav-bar">
-      <li v-for="menu in navList">
-        <router-link :to="menu.path">
-          <span> {{ menu.name }} </span>
-        </router-link>
-      </li>
-    </ul>
-    <Input class="search-input" v-model="value" placeholder="搜索" icon="ios-search"/>
   </header>
 </template>
 <script>
 import Input from 'iview/src/components/input'
-
+import Account from './Account'
 const navList = [
   {name: '首页', path: 'index'},
   {name: '资讯', path: 'news'},
@@ -28,6 +31,7 @@ const navList = [
 ]
 export default {
   name: 'Header',
+  components: {Account},
   data () {
     return {
       single: false,
@@ -43,9 +47,12 @@ export default {
     height: 60px;
     line-height: 60px;
     background: #fff;
-    width: 1200px;
-    margin: 0 auto;
     display: flex;
+    & > div {
+      width: 1000px;
+      margin: 0px auto;
+      display: flex;
+    }
   }
   .logo {
     width: 40px;
@@ -63,7 +70,7 @@ export default {
   }
   .nav-bar {
     display: flex;
-    margin-left: 80px;
+    margin-left: 40px;
   }
   .nav-bar a {
     color: #6c727b
@@ -75,7 +82,7 @@ export default {
     display: flex;
     align-items: center;
     width: 170px;
-    margin-left: 110px;
+    margin-left: 40px;
   }
   .search-input .ivu-input {
     border-radius: 0;
