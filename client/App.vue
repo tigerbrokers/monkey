@@ -17,6 +17,7 @@
   }
 </script>
 <style>
+  @import './assets/style/index.css';
   .app {
     position: relative;
     overflow: hidden;
