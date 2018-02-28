@@ -19,6 +19,7 @@ passport.use(new LocalAuth((username, password, done) => {
     }
 
     if (user.password !== password) {
+      console.log(user.password, password)
       return done(null, false, {
         message: 'Password invalid.'
       })

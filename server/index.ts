@@ -27,29 +27,28 @@ app.keys = [ 'mysecret' ]
 app.use(session({}, app))
 app.use(bodyParser())
 
-// render(app, {
-//   root: path.join(__dirname, 'view'),
-//   layout: 'index',
-//   viewExt: 'html',
-//   cache: !isDev,
-//   debug: false
-// })
-
-app.use(async (ctx) => {
-  const htmlFile = await new Promise((resolve, reject) => {
-    const path = `${__dirname}/view/index.html`
-    fs.readFile(path, (err: any, data: any) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(data)
-      }
-    })
-  })
-  ctx.type = 'html'
-  ctx.body = htmlFile
+render(app, {
+  root: path.join(__dirname, 'view'),
+  layout: 'index',
+  viewExt: 'html',
+  cache: !isDev,
+  debug: false
 })
 
+// app.use(async (ctx) => {
+//   const htmlFile = await new Promise((resolve, reject) => {
+//     const path = `${__dirname}/view/index.html`
+//     fs.readFile(path, (err: any, data: any) => {
+//       if (err) {
+//         reject(err)
+//       } else {
+//         resolve(data)
+//       }
+//     })
+//   })
+//   ctx.type = 'html'
+//   ctx.body = htmlFile
+// })
 app.use(statics('./build'))
 app.use(router.routes())
 app.use(router.allowedMethods())

@@ -17,7 +17,7 @@
             <Input class="data-input" v-model="password" placeholder="请输入密码" type="password"/>
           </div>
           <div class="action-button">
-            <Button type="success" class="btn">{{action}}</Button>
+            <Button type="success" class="btn" @click="submitAction">{{action}}</Button>
           </div>
           <div class="mode-change">
             <span @click="isSubmit = false" v-if="isSubmit">已有账户登录</span>
@@ -38,6 +38,7 @@
 <script>
 import Input from 'iview/src/components/input'
 import Button from 'iview/src/components/button'
+import * as axios from 'axios'
   export default {
     name: 'Login',
     data () {
@@ -70,8 +71,32 @@ import Button from 'iview/src/components/button'
     methods: {
       login () {
         let param = {
-
+          username: this.userName,
+          password: this.password
         }
+        this.$store.dispatch('userLogin', param)
+          .then(data => {
+            console.log(data)
+          })
+      },
+      submit () {
+        let param = {
+          username: this.userName,
+          password: this.password,
+          email: this.userMail
+        }
+
+        this.$store.dispatch('userRegister', param)
+          .then(data => {
+            console.log(data)
+          })
+      },
+      submitAction () {
+        if (this.isSubmit) {
+          this.submit()
+        } else (
+          this.login()
+        )
       }
     }
   }

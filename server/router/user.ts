@@ -12,40 +12,66 @@ function hashPass (str:string = ''):string {
 }
 
 export default function (router:any) {
-  router.get('/login', async (ctx:any) => {
-    await ctx.render('login', {
-      title: 'login'
-    })
-  })
+  // router.get('/login', async (ctx:any) => {
+  //   await ctx.render('login', {
+  //     title: 'login'
+  //   })
+  // })
 
+  // router.post('/login',
+  //   passport.authenticate('local'),
+  //   async (ctx:any) => {
+  //     const user = ctx.state.user
+  //     ctx.redirect(`/user/${user.username}`)
+  //   })
+
+  // router.get('/user/:username', async (ctx:any) => {
+  //   const username = ctx.params.username
+  //   const user = await User.findOne({ where: { username } })
+  //   if (!user) return ctx.throw(404)
+
+  //   const plainUser = user.get({ plain: true })
+  //   delete plainUser.password
+
+  //   await ctx.render('user', { user: plainUser })
+  // })
   router.post('/login',
     passport.authenticate('local'),
-    async (ctx:any) => {
+    async (ctx: any) => {
       const user = ctx.state.user
-      ctx.redirect(`/user/${user.username}`)
-    })
+      ctx.status = 200
+      // ctx.redirect(`/user/${user.username}`)
+      let response = {
+        code: 'ok',
+        data: {
+          userName: user.username,
+          avator: user.avator,
+          email: user.email
+        }
+      }
+      ctx.body = response
+    }
+  )
 
-  router.get('/user/:username', async (ctx:any) => {
-    const username = ctx.params.username
-    const user = await User.findOne({ where: { username } })
-    if (!user) return ctx.throw(404)
-
-    const plainUser = user.get({ plain: true })
-    delete plainUser.password
-
-    await ctx.render('user', { user: plainUser })
-  })
-
-  router.post('/user', async (ctx:any) => {
+  router.post('/register', async (ctx:any) => {
     const userInfo = ctx.request.body
     const user = new User(userInfo)
-
-    user.name = userInfo.name || user.username
+    user.name = userInfo.name || user.username || 'monkeys'
     user.password = hashPass(user.password)
+    user.email = userInfo.email
     await user.save()
-    await ctx.login(user)
+    // await ctx.login(user)
     ctx.status = 200
-    ctx.redirect(`/user/${user.username}`)
+    // ctx.redirect(`/user/${user.username}`)
+    let response = {
+      code: 'ok',
+      data: {
+        userName: userInfo.userName,
+        avator: userInfo.avator,
+        email: userInfo.email
+      }
+    }
+    ctx.body = response
   })
 
   router.get('/signup', async (ctx:any) => {
