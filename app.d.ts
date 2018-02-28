@@ -5,7 +5,7 @@ declare module '*.vue' {
   export default Vue
 }
 
-declare var require : (filename:any,resolve:any)=>any;
+// declare var require : (filename:any,resolve:any)=>any;
 declare module 'iview' {
   const iview: any;
   export default iview;

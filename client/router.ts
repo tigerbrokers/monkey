@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+declare var require : (filename:any,resolve:any)=>any;
+
+
 
 // router settings
 Vue.use(VueRouter)
@@ -40,6 +43,10 @@ const routes = [
   {
     path: '/aboutUs',
     component: aboutUs
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
 ]
 

@@ -42,9 +42,9 @@ const routeList:any = requireDir('.')
     }
   })
 
-router.get('/*', async ctx => {
-  await ctx.render('index')
-})
+// router.get('/*', async ctx => {
+//   await ctx.render('index')
+// })
 
 // prevent files from request
 router.get('/_*', async ctx => {
