@@ -44,8 +44,7 @@ export default function (router:any) {
       let response = {
         code: 'ok',
         data: {
-          userName: user.username,
-          avator: user.avator,
+          username: user.username,
           email: user.email
         }
       }
@@ -66,9 +65,8 @@ export default function (router:any) {
     let response = {
       code: 'ok',
       data: {
-        userName: userInfo.userName,
-        avator: userInfo.avator,
-        email: userInfo.email
+        username: user.username,
+        email: user.email
       }
     }
     ctx.body = response

@@ -6,7 +6,7 @@ const state = {
 
 const getters = {
   isGuest (state) {
-    return state.identity.userName
+    return !state.identity.username
   }
 }
 
@@ -20,14 +20,19 @@ const actions = {
     return axios.post('/login', param)
       .then(({data}) => {
         console.log(data)
-        commit(types.UPDATE_USER_IDENTITY, data)
+        commit(types.UPDATE_USER_IDENTITY, data.data)
       })
   },
-  userRegister ({commit, getters, state}, param) {
+  userRegister ({commit, getters, state, dispatch}, param) {
     return axios.post('/register', param)
       .then(({data}) => {
-        console.log(data)
-        commit(types.UPDATE_USER_IDENTITY, data)
+        if (data.code === 'ok') {
+          let para = {
+            username: param.username,
+            password: param.password
+          }
+          return dispatch('userLogin', para)
+        }
       })
   }
 }

@@ -5,18 +5,20 @@
       <a @click="submit">注册</a>
     </div>
     <div v-else>
-      <a>tx</a>
+      <a>{{userName}}</a>
     </div>
   </div>
 </template>
 
 <script>
-  // import {mapGetters} from 'vuex'
+  import {mapGetters} from 'vuex'
   export default {
     name: 'Account',
-    data () {
-      return {
-        isGuest: true
+    computed: {
+      ...mapGetters(['isGuest']),
+      userName () {
+        let identity = this.$store.state.account.identity
+        return identity && identity.username
       }
     },
     methods: {

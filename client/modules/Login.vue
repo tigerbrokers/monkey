@@ -76,7 +76,7 @@ import * as axios from 'axios'
         }
         this.$store.dispatch('userLogin', param)
           .then(data => {
-            console.log(data)
+            this.showLoginPabel = false
           })
       },
       submit () {
@@ -88,7 +88,7 @@ import * as axios from 'axios'
 
         this.$store.dispatch('userRegister', param)
           .then(data => {
-            console.log(data)
+            this.showLoginPabel = false
           })
       },
       submitAction () {
