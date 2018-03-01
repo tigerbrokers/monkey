@@ -10,6 +10,7 @@ const router = new Router()
 const githubAuth = new GithubAuth(
   config.get('github'),
   async (accToken:any, refToken:any, profile:any, cb:any) => {
+    console.log(33333333333333)
     const user = await User.findOrCreate({
       where: {
         username: profile.username,

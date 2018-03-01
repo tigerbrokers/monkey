@@ -34,6 +34,9 @@ const actions = {
           return dispatch('userLogin', para)
         }
       })
+  },
+  loginViaGit ({commit, getters, state}) {
+    return axios.get('/auth/github')
   }
 }
 export default {

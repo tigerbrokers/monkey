@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="three-login" v-if="!isSubmit">
-            <img src="../assets/icons/github.svg" />
+            <img @click="loginViaGit" src="../assets/icons/github.svg" />
           </div>
         </form>
       </div>
@@ -97,6 +97,9 @@ import * as axios from 'axios'
         } else (
           this.login()
         )
+      },
+      loginViaGit () {
+        this.$store.dispatch('loginViaGit')
       }
     }
   }
