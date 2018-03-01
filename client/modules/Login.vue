@@ -27,7 +27,9 @@
             </div>
           </div>
           <div class="three-login" v-if="!isSubmit">
+            <a href="/auth/github">
             <img @click="loginViaGit" src="../assets/icons/github.svg" />
+            </a>
           </div>
         </form>
       </div>

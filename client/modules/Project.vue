@@ -1,11 +1,17 @@
 <template>
-  <div> 这是咨讯页面</div>
+  <div>
+    <pr-list></pr-list>
+  </div>
 </template>
 
 <script>
-export default {
-  name: 'Project'
-}
+  import PrList from '../components/prlist'
+  export default {
+    name: 'Project',
+    components: {
+      PrList
+    }
+  }
 </script>
 
 <style>

@@ -19,7 +19,6 @@ const actions = {
   userLogin ({commit, getters, state}, param) {
     return axios.post('/login', param)
       .then(({data}) => {
-        console.log(data)
         commit(types.UPDATE_USER_IDENTITY, data.data)
       })
   },
