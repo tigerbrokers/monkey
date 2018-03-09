@@ -1,6 +1,7 @@
 <template>
   <div>
-    首页
+    <header>热门推送</header>
+
   </div>
 </template>
 
@@ -11,5 +12,7 @@ export default {
 </script>
 
 <style scoped>
-
+  div {
+    margin: 20px 0px;
+  }
 </style>

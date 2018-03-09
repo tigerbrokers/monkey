@@ -11,7 +11,7 @@ import * as statics from 'koa-static'
 import router from 'app/server/router'
 
 import 'app/server/service'
-
+const fs = require('fs')
 const app = new Koa()
 
 const isDev = app.env === 'development'
@@ -35,6 +35,20 @@ render(app, {
   debug: false
 })
 
+// app.use(async (ctx) => {
+//   const htmlFile = await new Promise((resolve, reject) => {
+//     const path = `${__dirname}/view/index.html`
+//     fs.readFile(path, (err: any, data: any) => {
+//       if (err) {
+//         reject(err)
+//       } else {
+//         resolve(data)
+//       }
+//     })
+//   })
+//   ctx.type = 'html'
+//   ctx.body = htmlFile
+// })
 app.use(statics('./build'))
 app.use(router.routes())
 app.use(router.allowedMethods())
